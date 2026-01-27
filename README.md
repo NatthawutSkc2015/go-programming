@@ -4,6 +4,7 @@
 
 ## โจทย์ที่ 1: Worker Pool (Concurrency)
 **Basic Concurrency: Worker Pool**
+
 โจทย์: จงเขียนฟังก์ชันชื่อ RunWorkers โดยรับ parameter 2 ตัวคือ numWorkers (จำนวนคนงาน) และ
 numJobs (จำนวนงานทั้งหมด)
 ให้สร้ำง Workers จำนวน numWorkers ตัวที่ทำงานพร้อมๆ กัน (Concurrent)
@@ -28,6 +29,7 @@ go run 1_worker_pool/main.go
 
 ## โจทย์ที่ 2: Thread-Safe Counter
 **Thread-Safety: Safe Counter**
+
 โจทย์: จงสร้าง struct ชื่อ SafeCounter ที่ภายในเก็บค่า count (int) และมี Methods 2 ตัวดังน้ี:
 Inc(): สำหรับเพิ่มค่า count ทีละ 1
 Value(): สำหรับคืนค่า count ปัจจุบันออกมา
@@ -56,6 +58,7 @@ go run -race 2_safe_counter/main.go
 
 ## โจทย์ที่ 3: Shape Interface
 **Interfaces: ระบบคำนวณพื้นที่ (Shape)**
+
 โจทย์: ให้ประกาศ(Define) Interface ชื่อ Shape ที่มี method ชื่อ Area() float64
 สร้ำง Struct 2 ตัวชื่อ Rectangle (มี field Width, Height) และ Circle (มี field Radius)
 Implement method Area ให้กับ Struct ทั้งสองเพื่อคำนวณพื้นที่
@@ -79,6 +82,7 @@ go run 3_shape_interface/main.go
 
 ## โจทย์ที่ 4: Two Sum (HashMap)
 **Logic & Map: หาคู่ตัวเลข(Two Sum)**
+
 โจทย์: กำหนดให้มี Slice ของตัวเลข nums := []int{2, 7, 11, 15} และค่าเป้าหมาย target := 9 
 จงเขียนฟังก์ชันที่รับ nums และ target แล้วคืนค่า index ของตัวเลข 2 ตัวใน slice ที่บวกกันแล้วได้เท่ากับ
 target พอดี สมมติว่ามีคำตอบที่ถูกต้องแน่นอนเพียง 1 คู่
@@ -101,6 +105,7 @@ go run 4_two_sum/main.go
 
 ## โจทย์ที่ 5: JSON API Server
 **HTTP Handler: สร้ำง JSON API ง่ายๆ**
+
 โจทย์: จงใช้ package net/http เขียน Web Server ที่รันบน port 8080 และมี endpoint ชื่อ /hello 
 โดยมีเงื่อนไขดังน้ี: ต้องรับ Request Method เป็น POST เท่านั้น
 รับ Body เป็น JSON: {"name": "Somchai"}
