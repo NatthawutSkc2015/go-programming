@@ -106,6 +106,7 @@ HTTP Handler: สร้ำง JSON API ง่ายๆ
 รับ Body เป็น JSON: {"name": "Somchai"}
 แกะค่า name ออกมาแล้วตอบกลับ (Response) เป็น JSON: {"message": "Hello Somchai"}
 กรณีที่ Method ไม่ใช่ POST หรือส่ง JSON มาผิด format ให้ return HTTP Error Code ที่เหมาะสมกลับไป
+
 **โฟล์เดอร์:** `5_json_api`
 
 **อธิบาย:**
