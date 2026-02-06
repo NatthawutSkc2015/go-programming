@@ -57,8 +57,12 @@ func main() {
 	fmt.Printf("Output: %v\n", result1)
 	if len(result1) > 0 {
 		for _, pair := range result1 {
-			fmt.Printf("  nums[%d] + nums[%d] = %d + %d = %d\n",
-				pair[0], pair[1], nums1[pair[0]], nums1[pair[1]], target1)
+			fmt.Printf(
+				"  nums[%d] + nums[%d] = %d + %d = %d\n",
+				pair[0], pair[1],
+				nums1[pair[0]], nums1[pair[1]],
+				target1,
+			)
 		}
 	}
 	fmt.Println()
@@ -71,8 +75,12 @@ func main() {
 	fmt.Printf("Output: %v\n", result2)
 	if len(result2) > 0 {
 		for _, pair := range result2 {
-			fmt.Printf("  nums[%d] + nums[%d] = %d + %d = %d\n",
-				pair[0], pair[1], nums2[pair[0]], nums2[pair[1]], target2)
+			fmt.Printf(
+				"  nums[%d] + nums[%d] = %d + %d = %d\n",
+				pair[0], pair[1], nums2[pair[0]],
+				nums2[pair[1]],
+				target2,
+			)
 		}
 	}
 	fmt.Println()
@@ -85,8 +93,12 @@ func main() {
 	fmt.Printf("Output: %v\n", result3)
 	if len(result3) > 0 {
 		for _, pair := range result3 {
-			fmt.Printf("  nums[%d] + nums[%d] = %d + %d = %d\n",
-				pair[0], pair[1], nums3[pair[0]], nums3[pair[1]], target3)
+			fmt.Printf(
+				"  nums[%d] + nums[%d] = %d + %d = %d\n",
+				pair[0], pair[1],
+				nums3[pair[0]], nums3[pair[1]],
+				target3,
+			)
 		}
 	}
 	fmt.Println()
@@ -110,8 +122,12 @@ func main() {
 	fmt.Printf("Output: %v\n", result5)
 	if len(result5) > 0 {
 		for _, pair := range result5 {
-			fmt.Printf("  nums[%d] + nums[%d] = %d + %d = %d\n",
-				pair[0], pair[1], nums5[pair[0]], nums5[pair[1]], target5)
+			fmt.Printf(
+				"  nums[%d] + nums[%d] = %d + %d = %d\n",
+				pair[0], pair[1],
+				nums5[pair[0]], nums5[pair[1]],
+				target5,
+			)
 		}
 	}
 	fmt.Println()
@@ -124,8 +140,12 @@ func main() {
 	fmt.Printf("Output: %v\n", result6)
 	if len(result6) > 0 {
 		for _, pair := range result6 {
-			fmt.Printf("  nums[%d] + nums[%d] = %d + %d = %d\n",
-				pair[0], pair[1], nums6[pair[0]], nums6[pair[1]], target6)
+			fmt.Printf(
+				"  nums[%d] + nums[%d] = %d + %d = %d\n",
+				pair[0], pair[1],
+				nums6[pair[0]], nums6[pair[1]],
+				target6,
+			)
 		}
 	}
 }

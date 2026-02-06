@@ -63,12 +63,10 @@ func scenario1() {
 	var wg sync.WaitGroup
 
 	// 5 concurrent withdrawals of 200 each
-	for i := 0; i < 5; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
+	for range 5 {
+		wg.Go(func() {
 			account.Withdraw(200)
-		}(i)
+		})
 	}
 
 	wg.Wait()
@@ -82,21 +80,17 @@ func scenario2() {
 	var wg sync.WaitGroup
 
 	// 5 deposits of 100
-	for i := 0; i < 5; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
+	for range 5 {
+		wg.Go(func() {
 			account.Deposit(100)
-		}(i)
+		})
 	}
 
 	// 8 withdrawals of 150
-	for i := 0; i < 8; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
+	for range 8 {
+		wg.Go(func() {
 			account.Withdraw(150)
-		}(i)
+		})
 	}
 
 	wg.Wait()
@@ -117,12 +111,9 @@ func scenario3() {
 	var countMu sync.Mutex
 
 	// 100 concurrent withdrawals of 100 each
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
+	for range 100 {
+		wg.Go(func() {
 			success := account.Withdraw(100)
-
 			countMu.Lock()
 			if success {
 				successCount++
@@ -130,7 +121,7 @@ func scenario3() {
 				failCount++
 			}
 			countMu.Unlock()
-		}(i)
+		})
 	}
 
 	wg.Wait()
@@ -165,12 +156,10 @@ func scenario4() {
 	safeAccount := NewBankAccount(1000)
 	var wg1 sync.WaitGroup
 
-	for i := 0; i < 10; i++ {
-		wg1.Add(1)
-		go func() {
-			defer wg1.Done()
+	for range 10 {
+		wg1.Go(func() {
 			safeAccount.Withdraw(200)
-		}()
+		})
 	}
 	wg1.Wait()
 	fmt.Printf("Final Balance: %d (Should be >= 0) ✅\n", safeAccount.GetBalance())
@@ -180,12 +169,10 @@ func scenario4() {
 	unsafeAccount := &UnsafeBankAccount{balance: 1000}
 	var wg2 sync.WaitGroup
 
-	for i := 0; i < 10; i++ {
-		wg2.Add(1)
-		go func() {
-			defer wg2.Done()
+	for range 10 {
+		wg2.Go(func() {
 			unsafeAccount.Withdraw(200)
-		}()
+		})
 	}
 	wg2.Wait()
 	fmt.Printf("Final Balance: %d ", unsafeAccount.balance)
@@ -205,21 +192,17 @@ func scenario5() {
 	startTime := time.Now()
 
 	// 500 deposits
-	for i := 0; i < 500; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
+	for range 500 {
+		wg.Go(func() {
 			account.Deposit(50)
-		}()
+		})
 	}
 
 	// 500 withdrawals
-	for i := 0; i < 500; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
+	for range 500 {
+		wg.Go(func() {
 			account.Withdraw(150)
-		}()
+		})
 	}
 
 	wg.Wait()
@@ -247,12 +230,10 @@ func main() {
 	fmt.Println("Initial Balance: 1000")
 	fmt.Println("\nStarting 10 concurrent withdrawals of 150 each...")
 
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func(id int) {
-			defer wg.Done()
+	for range 10 {
+		wg.Go(func() {
 			account.Withdraw(150)
-		}(i)
+		})
 	}
 
 	wg.Wait()

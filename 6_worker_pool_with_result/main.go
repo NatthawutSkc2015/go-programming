@@ -14,17 +14,14 @@ func RunWorkers(numWorkers, numJobs int) {
 	var wg sync.WaitGroup
 
 	// Start workers
-	for w := 1; w <= numWorkers; w++ {
-		wg.Add(1)
-		go func(workerID int) {
-			defer wg.Done()
-			// Worker processes jobs from the channel
+	for range numWorkers {
+		wg.Go(func() {
 			for jobID := range jobs {
 				time.Sleep(1 * time.Second) // Simulate work
 				// Send result (jobID * 2) to results channel
 				results <- jobID * 2
 			}
-		}(w)
+		})
 	}
 
 	// Start a goroutine to close results channel after all workers finish

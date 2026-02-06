@@ -13,16 +13,13 @@ func RunWorkers(numWorkers, numJobs int) {
 	var wg sync.WaitGroup
 
 	// Start workers
-	for w := 1; w <= numWorkers; w++ {
-		wg.Add(1)
-		go func(workerID int) {
-			defer wg.Done()
-			// Worker processes jobs from the channel
+	for w := range numWorkers {
+		wg.Go(func() {
 			for jobID := range jobs {
-				fmt.Printf("Worker %d processing job %d\n", workerID, jobID)
+				fmt.Printf("Worker %d processing job %d\n", w, jobID)
 				time.Sleep(1 * time.Second) // Simulate work
 			}
-		}(w)
+		})
 	}
 
 	// Send jobs to channel
